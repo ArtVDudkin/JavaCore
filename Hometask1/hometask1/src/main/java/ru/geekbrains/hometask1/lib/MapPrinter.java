@@ -38,10 +38,10 @@ public class MapPrinter {
             for (int col = 0; col < map[row].length; col++) {
                 switch (map[row][col]) {
                     case 0:
-                        sb.append("░");
+                        sb.append("\u2591"); //sb.append("░");
                         break;
                     case -1:
-                        sb.append("▓");
+                        sb.append("\u2592"); //sb.append("▓");
                         break;
                     case -2:
                         sb.append("К");
@@ -53,7 +53,7 @@ public class MapPrinter {
                         sb.append(".");
                         break;
                     default:
-                        sb.append("░");
+                        sb.append("\u2591"); // sb.append("░");
                         break;
                 }
             }

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.geekbrains.hometask1.lib"},{"l":"ru.geekbrains.hometask1.program"}]

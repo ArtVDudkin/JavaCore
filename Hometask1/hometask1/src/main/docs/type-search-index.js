@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.geekbrains.hometask1.program","l":"Main"},{"p":"ru.geekbrains.hometask1.lib","l":"MapGenerator"},{"p":"ru.geekbrains.hometask1.lib","l":"MapPrinter"},{"p":"ru.geekbrains.hometask1.lib","l":"Point2D"},{"p":"ru.geekbrains.hometask1.lib","l":"WaveAlgorythm"}]

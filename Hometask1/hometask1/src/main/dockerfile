@@ -1,0 +1,5 @@
+FROM openjdk:latest
+COPY ./java ./src
+RUN mkdir ./out
+RUN javac -sourcepath ./src -d out src/ru/geekbrains/hometask1/program/Main.java
+CMD java -classpath ./out ru.geekbrains.hometask1.program.Main

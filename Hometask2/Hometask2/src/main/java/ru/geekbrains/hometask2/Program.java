@@ -42,7 +42,7 @@ public class Program {
     /**
      * Инициализация игрового поля
      */
-    private static void initGame(){
+    private static void initGame() {
         // Установим размерность игрового поля
         fieldSizeX = 9;
         fieldSizeY = 9;
@@ -59,15 +59,15 @@ public class Program {
     /**
      * Отрисовка игрового поля
      */
-    private static void printField(){
+    private static void printField() {
         // Печатаем верхнюю часть поля
         System.out.print(" -");
-        for (int x = 0; x < fieldSizeX; x++){
+        for (int x = 0; x < fieldSizeX; x++) {
             System.out.print(x + 1 + "-");
         }
         System.out.println();
         // Печатаем среднюю часть поля
-        for (int y = 0; y < fieldSizeY; y++){
+        for (int y = 0; y < fieldSizeY; y++) {
             System.out.print(y + 1 + "|");
             for (int x = 0; x <  fieldSizeX; x++) {
                 System.out.print(field[x][y] + "|");
@@ -75,7 +75,7 @@ public class Program {
             System.out.println();
         }
         // Печатаем нижнюю часть поля
-        for (int x = 0; x < fieldSizeX + 1; x++){
+        for (int x = 0; x < fieldSizeX + 1; x++) {
             System.out.print("--");
         }
         System.out.println();
@@ -84,11 +84,13 @@ public class Program {
     /**
      * Обработка хода игрока (человек)
      */
-    private static void humanTurn(){
+    private static void humanTurn() {
         int x, y;
         do
         {
-            System.out.printf("Введите через пробел координаты хода X (от 1 до %d) и Y (от 1 до %d) >>> ", fieldSizeX, fieldSizeY);
+            System.out.printf("Чтобы победить, нужно составить в одну линию %d фигур\n", WIN_COUNT);
+            System.out.printf("Введите через пробел координаты Вашего следующего хода: "
+                    + "X (от 1 до %d) и Y (от 1 до %d) >>> ", fieldSizeX, fieldSizeY);
             x = scan.nextInt() - 1;
             y = scan.nextInt() - 1;
         }
@@ -98,29 +100,29 @@ public class Program {
 
     /**
      * Проверка, ячейка является пустой
-     * @param x - координата X
-     * @param y - координата Y
+     * @param x координата X
+     * @param y координата Y
      * @return true если ячейка свободна
      */
-    static boolean isCellEmpty(int x, int y){
+    static boolean isCellEmpty(int x, int y) {
         return field[x][y] == DOT_EMPTY;
     }
 
     /**
      * Проверка корректности ввода
      * (координаты хода не должны превышать размеры игрового поля)
-     * @param x - координата X
-     * @param y - координата Y
+     * @param x координата X
+     * @param y координата Y
      * @return true если введены валидные координаты ячейки поля
      */
-    static boolean isCellValid(int x, int y){
+    static boolean isCellValid(int x, int y) {
         return x >= 0 &&  x < fieldSizeX && y >= 0 && y < fieldSizeY;
     }
 
     /**
      * Ход компьютера
      */
-    private static void aiTurn(){
+    private static void aiTurn() {
         int x, y;
         do
         {
@@ -133,10 +135,10 @@ public class Program {
 
     /**
      * Проверка победил ли кто-нибудь
-     * @param c - символ, характерный для игрока или компьютера
+     * @param c символ, характерный для игрока или компьютера
      * @return true если выявлен победитель
      */
-    private static boolean checkWin(char c){
+    private static boolean checkWin(char c) {
         for (int x = 0; x < fieldSizeX; x++) {
             for (int y = 0; y < fieldSizeY; y++) {
                 if (checkFrom(x,y)) {
@@ -149,28 +151,32 @@ public class Program {
 
     /**
      *
-     * @param x - текущая координата X
-     * @param y - текущая координата Y
+     * @param x текущая координата X
+     * @param y текущая координата Y
      * @return true если найдена комбинация из WIN_COUNT одинаковых фигур подряд по вертикали, горизонтали или диагонали
      */
     private static boolean checkFrom(int x, int y) {
         char player = field[x][y];
-        if (player == DOT_EMPTY)  // если ячейка свободная, дальше ничего не ищем
+        if (player == DOT_EMPTY) { // если ячейка свободная, дальше ничего не ищем
             return false;
-
+        }
         boolean xWin = true;   // Проверяем ячейки горизонтали
         boolean yWin = true;   // Проверяем ячейки вертикали
         boolean xyWin = true;  // Проверяем ячейки по главной диагонали
         boolean yxWin = true;  // Проверяем ячейки по второстепенной диагонали
         for (int i = 0; i < WIN_COUNT; i++) {
-            if (i + x >= fieldSizeX || field[i+x][y] != player)
+            if (i + x >= fieldSizeX || field[i+x][y] != player) {
                 xWin = false;
-            if (i + y >= fieldSizeY || field[x][i+y] != player)
+            }
+            if (i + y >= fieldSizeY || field[x][i+y] != player) {
                 yWin = false;
-            if (i + y >= fieldSizeY || i + x >= fieldSizeX || field[x+i][i+y] != player)
+            }
+            if (i + y >= fieldSizeY || i + x >= fieldSizeX || field[x+i][i+y] != player) {
                 xyWin = false;
-            if (y + i >= fieldSizeY || x - i < 0 || field[x-i][y+i] != player)
+            }
+            if (y + i >= fieldSizeY || x - i < 0 || field[x-i][y+i] != player) {
                 yxWin = false;
+            }
         }
 
         return xyWin || xWin || yWin || yxWin;
@@ -180,8 +186,8 @@ public class Program {
      * Проверка на ничью
      * @return true если все ячейки на поле уже заняты и свободных нет
      */
-    static boolean checkDraw(){
-        for (int x = 0; x < fieldSizeX; x++){
+    static boolean checkDraw() {
+        for (int x = 0; x < fieldSizeX; x++) {
             for (int y = 0; y < fieldSizeY; y++)
                 if (isCellEmpty(x, y)) return false;
         }
@@ -190,16 +196,16 @@ public class Program {
 
     /**
      * Метод проверки состояния игры
-     * @param c - символ, характерный для игрока или компьютера
-     * @param str - сообщение о результате игры
+     * @param c символ, характерный для игрока или компьютера
+     * @param str сообщение о результате игры
      * @return true если игра завершился чьей-то победой, либо ничьей. false если игра не закончена
      */
-    static boolean gameCheck(char c, String str){
-        if (checkWin(c)){
+    static boolean gameCheck(char c, String str) {
+        if (checkWin(c)) {
             System.out.println(str);
             return true;
         }
-        if (checkDraw()){
+        if (checkDraw()) {
             System.out.println("Ничья!");
             return true;
         }

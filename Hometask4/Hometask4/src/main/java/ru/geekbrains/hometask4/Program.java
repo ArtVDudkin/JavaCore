@@ -42,6 +42,15 @@ public class Program {
 
     }
 
+    /**
+     * Method converts all elements of string array 4x4 to integer values and returns a sum of them
+     * @param arr input array to
+     * @param maxRow maximum allowed row count of input array
+     * @param maxCol maximum allowed column count of input array
+     * @return a sum of elements of array
+     * @throws MyArraySizeException when input array size is not equal 4x4
+     * @throws MyArrayDataException when one or more elements of array can not be converted to integer
+     */
     public static int getSum(String[][] arr, int maxRow, int maxCol) throws MyArraySizeException, MyArrayDataException {
         if (arr.length != maxRow || arr[0].length != maxCol) {
             throw new MyArraySizeException("Ошибка! Размер массива должен быть равен ", maxRow, maxCol);

@@ -5,6 +5,7 @@ public class MyArraySizeException extends RuntimeException {
     private String message;
     private int maxRow;
     private int maxCol;
+
     public MyArraySizeException(String message, int maxRow, int maxCol) {
         this.message = message;
         this.maxRow = maxRow;

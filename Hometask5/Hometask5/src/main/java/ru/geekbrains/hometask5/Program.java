@@ -20,6 +20,7 @@ public class Program {
         // Выводим в консоль файловый каталог, начиная с указанной директории sourceDir
         Tree.print(new File(sourceDir), "", true);
 
+        // Сохраняем поле 3х3 из игры крестики-нолики в формате 3х байт
         TicTacToe field = new TicTacToe();
         field.fillField();
         field.printField();

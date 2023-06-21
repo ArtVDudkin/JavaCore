@@ -15,6 +15,11 @@ public class Program {
         // Выводим в консоль файловый каталог, начиная с указанной директории sourceDir
         Tree.print(new File(sourceDir), "", true);
 
+        TicTacToe field = new TicTacToe();
+        field.fillField();
+        field.printField();
+        field.saveField();
+
     }
 
 }

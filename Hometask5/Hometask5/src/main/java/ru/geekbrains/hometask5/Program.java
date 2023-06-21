@@ -1,6 +1,7 @@
 package ru.geekbrains.hometask5;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Program {
 
@@ -10,7 +11,11 @@ public class Program {
         String backupDir = "./backup";
 
         // Создаем backup
-        Backuper backup = new Backuper(sourceDir, backupDir);
+        try {
+            Backuper backup = new Backuper(sourceDir, backupDir);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Выводим в консоль файловый каталог, начиная с указанной директории sourceDir
         Tree.print(new File(sourceDir), "", true);

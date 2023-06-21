@@ -8,12 +8,8 @@ import java.util.Scanner;
 
 public class Backuper {
 
-    public Backuper(String sourcePath, String backupPath) {
-        try {
-            createBackup(sourcePath, backupPath);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Backuper(String sourcePath, String backupPath) throws IOException {
+        createBackup(sourcePath, backupPath);
     }
 
     /**
